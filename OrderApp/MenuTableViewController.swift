@@ -10,9 +10,10 @@ import UIKit
 class MenuTableViewController: UITableViewController {
 
     let category: String
-    // create an instance to use network request defined
-    let menuController = MenuController()
     var menuItems = [MenuItem]()
+    
+
+    
     
     init?(coder: NSCoder, category: String) {
         self.category = category
@@ -27,7 +28,7 @@ class MenuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        menuController.fetchMenuItem(forCategory: category) { (result) in
+        MenuController.shared.fetchMenuItem(forCategory: category) { (result) in
             switch result {
             case .success(let menuItems):
                 self.updateUI(with: menuItems)
@@ -54,6 +55,18 @@ class MenuTableViewController: UITableViewController {
     }
     
     
+    @IBSegueAction func showMenuItem(_ coder: NSCoder, sender: Any?) -> MenuItemDetailViewController? {
+        guard let cell = sender as? UITableViewCell,
+              let indexPath = tableView.indexPath(for: cell) else {return nil}
+        
+        let menuItem = menuItems[indexPath.row]
+        return MenuItemDetailViewController(coder: coder, menuItem: menuItem)
+    }
+    
+    
+    
+    
+    
 //    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -74,7 +87,7 @@ class MenuTableViewController: UITableViewController {
     func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         let menuItem = menuItems[indexPath.row]
         cell.textLabel?.text = menuItem.name
-        cell.detailTextLabel?.text = "$\(menuItem.price)"
+        cell.detailTextLabel?.text = MenuItem.priceFormatter.string(from: NSNumber(value: menuItem.price))
     }
 
     /*

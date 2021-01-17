@@ -8,14 +8,13 @@
 import UIKit
 
 class CategoryTableViewController: UITableViewController {
-    let menuController = MenuController()
     var categories = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // fetchCategories closure is on a background queue
-        menuController.fetchCategories { (result) in
+        MenuController.shared.fetchCategories { (result) in
             switch result {
             case .success(let categories):
                 self.updateUI(with: categories)
@@ -51,7 +50,7 @@ class CategoryTableViewController: UITableViewController {
         }
         //determine the categiry selected
         let category = categories[indexPath.row]
-        // use custom initializer to create and return 
+        // use custom initializer to create and return
         return MenuTableViewController(coder: coder, category: category)
     }
     

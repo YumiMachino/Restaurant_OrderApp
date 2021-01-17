@@ -9,6 +9,16 @@ import Foundation
 // models to represents the server data
 
 struct MenuItem: Codable {
+    
+    static let priceFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencySymbol =  "$"
+        
+        return formatter
+    }()
+    
+    
     var id: Int
     var name: String
     var detailText: String

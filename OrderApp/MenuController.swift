@@ -8,9 +8,10 @@
 import Foundation
 
 class MenuController {
+    // shared all across the VCs (like shared instance of URLSession)-> no need to create instance of this class per VC because of this
+    static let shared = MenuController()
+    
     let baseURL = URL(string: "http://localhost:8080/")!
-    
-    
     
     // GET for categories. request to /categories
     func fetchCategories(completion: @escaping ((Result<[String], Error>) -> Void)){
