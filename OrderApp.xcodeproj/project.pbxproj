@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE35F11425B4C20500AFB1A6 /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35F11325B4C20500AFB1A6 /* OrderConfirmationViewController.swift */; };
 		AE77CDA325B3DCF300628262 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE77CDA225B3DCF300628262 /* AppDelegate.swift */; };
 		AE77CDA525B3DCF300628262 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE77CDA425B3DCF300628262 /* SceneDelegate.swift */; };
 		AE77CDA725B3DCF300628262 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE77CDA625B3DCF300628262 /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AE35F11325B4C20500AFB1A6 /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
 		AE77CD9F25B3DCF300628262 /* OrderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE77CDA225B3DCF300628262 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE77CDA425B3DCF300628262 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			children = (
 				AE77CDA225B3DCF300628262 /* AppDelegate.swift */,
 				AE77CDA425B3DCF300628262 /* SceneDelegate.swift */,
+				AE35F11325B4C20500AFB1A6 /* OrderConfirmationViewController.swift */,
 				AE77CDA625B3DCF300628262 /* ViewController.swift */,
 				AE77CDA825B3DCF300628262 /* Main.storyboard */,
 				AE77CDC325B3E57E00628262 /* MenuItem.swift */,
@@ -167,6 +170,7 @@
 				AE77CDCB25B3E66F00628262 /* ResponseModels.swift in Sources */,
 				AE77CDC425B3E57E00628262 /* MenuItem.swift in Sources */,
 				AE77CDBE25B3E2D800628262 /* OrderTableViewController.swift in Sources */,
+				AE35F11425B4C20500AFB1A6 /* OrderConfirmationViewController.swift in Sources */,
 				AE77CDB825B3E2AD00628262 /* CategoryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

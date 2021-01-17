@@ -11,6 +11,15 @@ class MenuController {
     // shared all across the VCs (like shared instance of URLSession)-> no need to create instance of this class per VC because of this
     static let shared = MenuController()
     
+    // notify order changes
+    static let orderUpdatedNotification = Notification.Name("MenuController.orderUpdated")
+    
+    var order = Order() {
+        didSet {
+            NotificationCenter.default.post(name: MenuController.orderUpdatedNotification, object: nil)
+        }
+    }
+    
     let baseURL = URL(string: "http://localhost:8080/")!
     
     // GET for categories. request to /categories
