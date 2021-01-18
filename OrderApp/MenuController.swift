@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class MenuController {
     // shared all across the VCs (like shared instance of URLSession)-> no need to create instance of this class per VC because of this
@@ -20,7 +21,7 @@ class MenuController {
         }
     }
     
-    let baseURL = URL(string: "http://localhost:8080/")!
+    let baseURL = URL(string: "http://localhost:8090/")!
     
     // GET for categories. request to /categories
     func fetchCategories(completion: @escaping ((Result<[String], Error>) -> Void)){
@@ -67,6 +68,24 @@ class MenuController {
         }
         task.resume()
     }
+    
+    // takes imageURL, completion handler receives UIImage data
+    func fetchImage(url: URL, completion: @escaping (UIImage?)
+       -> Void) {
+        let task = URLSession.shared.dataTask(with: url)
+           { (data, response, error) in
+            if let data = data,
+                let image = UIImage(data: data) {
+                completion(image)
+            } else {
+                completion(nil)
+            }
+        }
+        task.resume()
+    }
+ 
+    
+    
 
 
     typealias MinutesToPrepare = Int

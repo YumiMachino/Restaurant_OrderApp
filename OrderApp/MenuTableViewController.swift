@@ -81,5 +81,19 @@ class MenuTableViewController: UITableViewController {
         let menuItem = menuItems[indexPath.row]
         cell.textLabel?.text = menuItem.name
         cell.detailTextLabel?.text = MenuItem.priceFormatter.string(from: NSNumber(value: menuItem.price))
+        // verify image
+        MenuController.shared.fetchImage(url: menuItem.imageURL) { (image) in
+            guard let image = image else {return}
+        // load into imageView
+            DispatchQueue.main.async {
+                if let currentIndexPath = self.tableView.indexPath(for: cell),
+                   currentIndexPath != indexPath {
+                    return
+                }
+                cell.imageView?.image = image
+                cell.setNeedsLayout()
+            }
+        }
     }
 }
+                                                                                                                                                                                                                                            

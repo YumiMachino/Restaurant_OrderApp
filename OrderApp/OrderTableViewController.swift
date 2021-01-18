@@ -21,7 +21,9 @@ class OrderTableViewController: UITableViewController {
 
     // dismiss action
     @IBAction func unwindToOrderList(_ sender: UIStoryboardSegue) {
-        
+        if sender.identifier == "dismissConfirmation" {
+            MenuController.shared.order.menuItems.removeAll()
+        }
     }
 
     @IBAction func submitTapped(_ sender: Any) {
@@ -90,6 +92,18 @@ class OrderTableViewController: UITableViewController {
         let menuItem = MenuController.shared.order.menuItems[indexPath.row]
         cell.textLabel?.text = menuItem.name
         cell.detailTextLabel?.text = MenuItem.priceFormatter.string(from: NSNumber(value: menuItem.price))
+        
+        MenuController.shared.fetchImage(url: menuItem.imageURL) { (image) in
+            guard let image = image else { return }
+            DispatchQueue.main.async {
+                if let currentIndexPath = self.tableView.indexPath(for: cell),
+                   currentIndexPath != indexPath {
+                    return
+                }
+                cell.imageView?.image = image
+                cell.setNeedsLayout()
+            }
+        }
     }
 
     // cell which swipe-to-delete is available
